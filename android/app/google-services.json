@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "124137133665",
+    "project_id": "small-town-d471c",
+    "storage_bucket": "small-town-d471c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124137133665:android:74b450c918db6d4ce3bc20",
+        "android_client_info": {
+          "package_name": "com.xarcraft.smalltown"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124137133665-15fvlmdlmkdpgnubace8r1ltsmbh9sfd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6ylui4CNv_0KnPYm7e8nQ1exdlI74KwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124137133665-15fvlmdlmkdpgnubace8r1ltsmbh9sfd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
