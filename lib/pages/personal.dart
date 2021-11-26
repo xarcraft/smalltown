@@ -27,7 +27,7 @@ class _PersonalDataState extends State<PersonalData> {
       ),
       body: Center(
         child: ListView(
-          children: [
+          children: const [
             Text('hola'),
           ],
         ),

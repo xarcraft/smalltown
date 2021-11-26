@@ -144,7 +144,7 @@ class _IndexPageState extends State<IndexPage> {
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.red[600],
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => SearchPage()));
