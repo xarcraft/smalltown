@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/homepage.dart';
+import 'package:smalltown/pages/newlogin.dart';
 import 'package:smalltown/pages/perfil.dart';
 import 'package:smalltown/pages/personal.dart';
 import 'package:smalltown/pages/search.dart';
@@ -54,7 +55,10 @@ class _IndexPageState extends State<IndexPage> {
           padding: const EdgeInsets.all(0),
           children: [
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Colors.amber[300]),
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/background.png'),
+                      fit: BoxFit.cover)),
               accountName: Text(
                 widget.nombre,
                 style: const TextStyle(
@@ -76,6 +80,7 @@ class _IndexPageState extends State<IndexPage> {
               title: const Text('Perfil'),
               leading: const Icon(Icons.person),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -86,27 +91,36 @@ class _IndexPageState extends State<IndexPage> {
             ListTile(
               title: const Text('Favoritos'),
               leading: const Icon(Icons.star_border),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+              },
             ),
             ListTile(
               title: const Text('Compras'),
               leading: const Icon(Icons.shopping_basket),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+              },
             ),
             ListTile(
               title: const Text('Mi carrito'),
               leading: const Icon(Icons.shopping_cart),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+              },
             ),
             ListTile(
               title: const Text('Promociones'),
               leading: const Icon(Icons.money_off),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+              },
             ),
             ListTile(
               title: const Text('Cerrar sesión'),
               leading: const Icon(Icons.logout),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const HomePage()));
               },

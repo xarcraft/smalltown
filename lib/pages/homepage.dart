@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:smalltown/pages/login.dart';
+import 'package:smalltown/pages/newlogin.dart';
 import 'package:smalltown/pages/register.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const LoginPage()));
+                                builder: (context) => const NewLogin()));
                       },
                       color: const Color.fromRGBO(246, 215, 121, 10.0),
                       shape: RoundedRectangleBorder(

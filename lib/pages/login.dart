@@ -70,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Icon(Icons.phone_android))),
                 ),
                 TextField(
+                  obscureText: true,
                   controller: contrasena,
                   decoration: const InputDecoration(
                       hintText: "Ingrese su contraseña",
@@ -107,6 +108,12 @@ class _LoginPageState extends State<LoginPage> {
                       for (var aces in inicio.docs) {
                         credencial.add(aces.data());
                       }
+                      /* DatosUsuario dataUser = DatosUsuario(
+                          celular.text,
+                          credencial[0]['contrasena'],
+                          credencial[0]['correo'],
+                          credencial[0]['direccion'],
+                          credencial[0]['nombre']); */
                       Fluttertoast.showToast(
                           msg: 'sabia que volverias',
                           toastLength: Toast.LENGTH_LONG,
@@ -148,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
+                /* Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Olvidaste tu contraseña? '),
@@ -164,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                       onTap: () {},
                     )
                   ],
-                ),
+                ), */
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -197,10 +204,12 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 class DatosUsuario {
+  String celular = "";
   String nombre = "";
   String direccion = "";
   String correo = "";
   String contrasena = "";
 
-  DatosUsuario(this.contrasena, this.correo, this.direccion, this.nombre);
+  DatosUsuario(
+      this.celular, this.contrasena, this.correo, this.direccion, this.nombre);
 }

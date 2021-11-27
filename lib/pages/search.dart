@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:smalltown/pages/find.dart';
 
 class SearchPage extends StatelessWidget {
   TextEditingController search = TextEditingController();
@@ -50,8 +51,8 @@ class SearchPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(50),
           ),
           onPressed: () {
-            /* Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FingPage())); */
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const FindPage()));
 
             search.clear(); //limpia el textfield
           },
