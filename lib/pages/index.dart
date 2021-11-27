@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/homepage.dart';
-import 'package:smalltown/pages/newlogin.dart';
 import 'package:smalltown/pages/perfil.dart';
 import 'package:smalltown/pages/personal.dart';
 import 'package:smalltown/pages/search.dart';
@@ -158,7 +157,7 @@ class _IndexPageState extends State<IndexPage> {
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red[600],
+        backgroundColor: const Color.fromRGBO(255, 0, 0, 3),
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => SearchPage()));
@@ -181,20 +180,21 @@ class Presentacion extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
       margin: const EdgeInsets.all(20),
       elevation: 15,
-      color: Colors.yellow[400],
+      color: const Color.fromRGBO(243, 255, 0, 1),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(35),
+        borderRadius: BorderRadius.circular(30),
         child: Column(children: [
           Image.network(imagen),
           Container(
-              color: Colors.yellow[400],
+              padding: const EdgeInsets.all(10),
+              color: const Color.fromRGBO(243, 255, 0, 1),
               child: Text(
                 texto,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                    fontSize: 30),
               ))
         ]),
       ),

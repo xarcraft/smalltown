@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                             MaterialPageRoute(
                                 builder: (context) => const NewLogin()));
                       },
-                      color: const Color.fromRGBO(246, 215, 121, 10.0),
+                      color: const Color.fromRGBO(243, 255, 0, 1),
                       shape: RoundedRectangleBorder(
                           side: const BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.circular(50)),
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                             MaterialPageRoute(
                                 builder: (context) => const RegisterPage()));
                       },
-                      color: const Color.fromRGBO(246, 215, 121, 10.0),
+                      color: const Color.fromRGBO(243, 255, 0, 1),
                       shape: RoundedRectangleBorder(
                           side: const BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.circular(50)),

@@ -33,50 +33,55 @@ class _PersonalDataState extends State<PersonalData> {
           ),
         ),
       ),
-      body: ListView(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            child: const Text(
-              'Ya sabemos que eres tu pero por motivos de seguridad debemos hacer una pequeña verificacion de rutina, por favor digita tus credenciales de acceso y procede a hacer los cambios que consideres necesarios',
-              textAlign: TextAlign.center,
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: ListView(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20.0),
+              child: const Text(
+                'Ya sabemos que eres tu pero por motivos de seguridad debemos hacer una pequeña verificacion de rutina, por favor digita tus credenciales de acceso y procede a hacer los cambios que consideres necesarios',
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              controller: celular,
-              decoration: const InputDecoration(
-                  hintText: "Ingrese su numero de telefono",
-                  labelText: 'Celular',
-                  icon: Padding(
-                      padding: EdgeInsets.only(top: 20.0),
-                      child: Icon(Icons.phone_android))),
+            Container(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                controller: celular,
+                decoration: const InputDecoration(
+                    hintText: "Ingrese su numero de telefono",
+                    labelText: 'Celular',
+                    icon: Padding(
+                        padding: EdgeInsets.only(top: 20.0),
+                        child: Icon(Icons.phone_android))),
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              controller: contrasena,
-              decoration: const InputDecoration(
-                  hintText: "Ingrese su contraseña",
-                  labelText: 'Contraseña',
-                  icon: Padding(
-                      padding: EdgeInsets.only(top: 15.0),
-                      child: Icon(Icons.vpn_key))),
+            Container(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                controller: contrasena,
+                decoration: const InputDecoration(
+                    hintText: "Ingrese su contraseña",
+                    labelText: 'Contraseña',
+                    icon: Padding(
+                        padding: EdgeInsets.only(top: 15.0),
+                        child: Icon(Icons.vpn_key))),
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            child: const Text(
-              'Luego de llenar los campos con las credenciales correctas procede a dar clic en el boton editar para proceder con los cambios que requieras',
-              textAlign: TextAlign.center,
+            Container(
+              padding: const EdgeInsets.all(20.0),
+              child: const Text(
+                'Luego de llenar los campos con las credenciales correctas procede a dar clic en el boton editar para proceder con los cambios que requieras',
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red[600],
+        backgroundColor: const Color.fromRGBO(255, 0, 0, 3),
         onPressed: () async {
           List user = [];
           if (celular.text.isEmpty || contrasena.text.isEmpty) {
