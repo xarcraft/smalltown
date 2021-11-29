@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/homepage.dart';
 import 'package:smalltown/pages/index.dart';
-import 'package:smalltown/pages/login.dart';
+import 'package:smalltown/pages/newlogin.dart';
 
 class EditPage extends StatefulWidget {
   final DatosUsuario usuario;
@@ -39,8 +39,7 @@ class _EditPageState extends State<EditPage> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => IndexPage(
-                          correo: correo.text,
-                          nombre: nombre.text,
+                          user: widget.usuario,
                         )));
           },
           icon: const Icon(
@@ -59,7 +58,7 @@ class _EditPageState extends State<EditPage> {
             Container(
               padding: const EdgeInsets.all(10.0),
               child: const Text(
-                'Ahora si aquí estan tus datos, dime que quieres modificar',
+                'Ok, esto es lo que sabemos de ti. ¿Deseas modificar algo?',
                 textAlign: TextAlign.center,
               ),
             ),
@@ -149,8 +148,7 @@ class _EditPageState extends State<EditPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => IndexPage(
-                                      correo: correo.text,
-                                      nombre: nombre.text,
+                                      user: widget.usuario,
                                     )));
                       }
                     },

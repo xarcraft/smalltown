@@ -144,12 +144,12 @@ class _NewLoginState extends State<NewLogin> {
                                 for (var aces in inicio.docs) {
                                   credencial.add(aces.data());
                                 }
-                                /* DatosUsuario dataUser = DatosUsuario(
-                            celular.text,
-                            credencial[0]['contrasena'],
-                            credencial[0]['correo'],
-                            credencial[0]['direccion'],
-                            credencial[0]['nombre']); */
+                                DatosUsuario dataUser = DatosUsuario(
+                                    celular.text,
+                                    credencial[0]['contrasena'],
+                                    credencial[0]['correo'],
+                                    credencial[0]['direccion'],
+                                    credencial[0]['nombre']);
                                 Fluttertoast.showToast(
                                     msg: 'sabia que volverias',
                                     toastLength: Toast.LENGTH_LONG,
@@ -158,8 +158,7 @@ class _NewLoginState extends State<NewLogin> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => IndexPage(
-                                              correo: credencial[0]["correo"],
-                                              nombre: credencial[0]['nombre'],
+                                              user: dataUser,
                                             )));
                               } else {
                                 Fluttertoast.showToast(
@@ -229,4 +228,15 @@ class _NewLoginState extends State<NewLogin> {
       ),
     );
   }
+}
+
+class DatosUsuario {
+  String celular = "";
+  String nombre = "";
+  String direccion = "";
+  String correo = "";
+  String contrasena = "";
+
+  DatosUsuario(
+      this.celular, this.contrasena, this.correo, this.direccion, this.nombre);
 }

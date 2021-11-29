@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/index.dart';
+import 'package:smalltown/pages/newlogin.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -138,27 +139,35 @@ class _RegisterPageState extends State<RegisterPage> {
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.CENTER);
                     } else {
+                      DatosUsuario nuevo = DatosUsuario(
+                          celular.text,
+                          contrasena.text,
+                          correo.text,
+                          direccion.text,
+                          nombre.text);
                       usuarios.doc(celular.text).set({
                         'nombre': nombre.text,
                         'direccion': direccion.text,
                         'correo': correo.text,
                         'contrasena': contrasena.text
                       });
+
                       Fluttertoast.showToast(
                           msg: 'Todo salio perfecto ahora disfruta esta App',
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.CENTER);
-                      /* celular.clear();
+
+                      celular.clear();
                       nombre.clear();
                       direccion.clear();
                       correo.clear();
-                      contrasena.clear(); */
+                      contrasena.clear();
+
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => IndexPage(
-                                    nombre: nombre.text,
-                                    correo: correo.text,
+                                    user: nuevo,
                                   )));
                     }
                   }

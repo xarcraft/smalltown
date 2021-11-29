@@ -1,16 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smalltown/pages/about.dart';
 import 'package:smalltown/pages/homepage.dart';
+import 'package:smalltown/pages/newlogin.dart';
 import 'package:smalltown/pages/perfil.dart';
-import 'package:smalltown/pages/personal.dart';
+import 'package:smalltown/pages/personaledit.dart';
 import 'package:smalltown/pages/search.dart';
 
 class IndexPage extends StatefulWidget {
-  final String nombre;
-  final String correo;
+  final DatosUsuario user;
   // ignore: use_key_in_widget_constructors
-  const IndexPage({required this.correo, required this.nombre});
+  const IndexPage({required this.user});
 
   @override
   _IndexPageState createState() => _IndexPageState();
@@ -18,6 +19,7 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> {
   List negocios = [];
+  List codigo = [];
   @override
   void initState() {
     super.initState();
@@ -25,11 +27,14 @@ class _IndexPageState extends State<IndexPage> {
   }
 
   void getNegocios() async {
+    String id = "";
     CollectionReference datos =
         FirebaseFirestore.instance.collection('comercios');
     QuerySnapshot comercio = await datos.get();
     if (comercio.docs.isNotEmpty) {
       for (var c in comercio.docs) {
+        id = c.id.toString();
+        codigo.add(id);
         negocios.add(c.data());
         setState(() {});
       }
@@ -59,14 +64,14 @@ class _IndexPageState extends State<IndexPage> {
                       image: AssetImage('assets/images/background.png'),
                       fit: BoxFit.cover)),
               accountName: Text(
-                widget.nombre,
+                widget.user.nombre,
                 style: const TextStyle(
                   fontSize: 22,
                   color: Colors.black,
                 ),
               ),
               accountEmail: Text(
-                widget.correo,
+                widget.user.correo,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -83,8 +88,9 @@ class _IndexPageState extends State<IndexPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const PersonalData())); // cerrar menu
+                        builder: (context) => EditPage(
+                            usuario: widget
+                                .user) /* PersonalData() */)); // cerrar menu
               },
             ),
             ListTile(
@@ -106,6 +112,15 @@ class _IndexPageState extends State<IndexPage> {
               leading: const Icon(Icons.shopping_cart),
               onTap: () {
                 Navigator.of(context).pop();
+                /* Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Shoppingcart(
+                              negocio: '',
+                              pedido: [],
+                              usuario: '',
+                              user: widget.user,
+                            ))); */
               },
             ),
             ListTile(
@@ -113,6 +128,15 @@ class _IndexPageState extends State<IndexPage> {
               leading: const Icon(Icons.money_off),
               onTap: () {
                 Navigator.of(context).pop();
+              },
+            ),
+            ListTile(
+              title: const Text('Acerca de'),
+              leading: const Icon(Icons.help_outline),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AboutMe()));
               },
             ),
             ListTile(
@@ -148,6 +172,9 @@ class _IndexPageState extends State<IndexPage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => Perfil(
+                                  user: widget.user,
+                                  celular: widget.user.celular,
+                                  idNegocio: codigo[i],
                                   comercio: local,
                                 )));
                   },
