@@ -16,7 +16,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
           title: Center(
             child: Builder(builder: (context) {
               return const Text(
-                'Promociones    ',
+                'Mis compras        ',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 22,
