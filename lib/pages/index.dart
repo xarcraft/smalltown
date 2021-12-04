@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/about.dart';
+import 'package:smalltown/pages/advertisement.dart';
 import 'package:smalltown/pages/homepage.dart';
 import 'package:smalltown/pages/newlogin.dart';
 import 'package:smalltown/pages/perfil.dart';
 import 'package:smalltown/pages/personaledit.dart';
 import 'package:smalltown/pages/search.dart';
+import 'package:smalltown/pages/shopping.dart';
 
 class IndexPage extends StatefulWidget {
   final DatosUsuario user;
@@ -81,7 +83,7 @@ class _IndexPageState extends State<IndexPage> {
                   Image.asset('assets/images/Logo_SmallTown1.png'),
             ),
             ListTile(
-              title: const Text('Perfil'),
+              title: const Text('Mi Perfil'),
               leading: const Icon(Icons.person),
               onTap: () {
                 Navigator.of(context).pop();
@@ -93,26 +95,30 @@ class _IndexPageState extends State<IndexPage> {
                                 .user) /* PersonalData() */)); // cerrar menu
               },
             ),
-            ListTile(
+            /* ListTile(
               title: const Text('Favoritos'),
               leading: const Icon(Icons.star_border),
               onTap: () {
                 Navigator.of(context).pop();
               },
-            ),
+            ), */
             ListTile(
-              title: const Text('Compras'),
+              title: const Text('Mis Compras'),
               leading: const Icon(Icons.shopping_basket),
               onTap: () {
                 Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ShoppingPage()));
               },
             ),
-            ListTile(
+            /* ListTile(
               title: const Text('Mi carrito'),
               leading: const Icon(Icons.shopping_cart),
               onTap: () {
                 Navigator.of(context).pop();
-                /* Navigator.push(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Shoppingcart(
@@ -120,14 +126,18 @@ class _IndexPageState extends State<IndexPage> {
                               pedido: [],
                               usuario: '',
                               user: widget.user,
-                            ))); */
+                            )));
               },
-            ),
+            ), */
             ListTile(
               title: const Text('Promociones'),
               leading: const Icon(Icons.money_off),
               onTap: () {
                 Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Advertisement()));
               },
             ),
             ListTile(

@@ -38,6 +38,7 @@ dependencies:
   cloud_firestore:
   fluttertoast: ^8.0.8
   url_launcher: ^6.0.15
+  firebase_messaging: ^11.2.0
 
 dev_dependencies:
   flutter_test:
