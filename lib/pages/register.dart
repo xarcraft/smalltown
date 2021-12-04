@@ -163,12 +163,17 @@ class _RegisterPageState extends State<RegisterPage> {
                       correo.clear();
                       contrasena.clear();
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => IndexPage(
-                                    user: nuevo,
-                                  )));
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return IndexPage(
+                              user: nuevo,
+                            );
+                          },
+                        ),
+                        (route) => false,
+                      );
                     }
                   }
                 },

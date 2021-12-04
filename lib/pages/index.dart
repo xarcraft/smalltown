@@ -154,8 +154,15 @@ class _IndexPageState extends State<IndexPage> {
               leading: const Icon(Icons.logout),
               onTap: () {
                 Navigator.of(context).pop();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const HomePage();
+                    },
+                  ),
+                  (route) => false,
+                );
               },
             )
           ],
@@ -197,7 +204,9 @@ class _IndexPageState extends State<IndexPage> {
         backgroundColor: const Color.fromRGBO(255, 0, 0, 3),
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SearchPage()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SearchPage(usuario: widget.user)));
         },
         child: const Icon(Icons.search),
       ),

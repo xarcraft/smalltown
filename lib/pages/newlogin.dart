@@ -154,12 +154,18 @@ class _NewLoginState extends State<NewLogin> {
                                     msg: 'sabia que volverias',
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.CENTER);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => IndexPage(
-                                              user: dataUser,
-                                            )));
+
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                      return IndexPage(
+                                        user: dataUser,
+                                      );
+                                    },
+                                  ),
+                                  (route) => false,
+                                );
                               } else {
                                 Fluttertoast.showToast(
                                     msg:

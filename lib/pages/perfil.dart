@@ -95,111 +95,106 @@ class _PerfilState extends State<Perfil> {
               ))
         ],
       ),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: ListView(
-          children: [
-            Presentacion(
-                imagen: widget.comercio.foto, texto: widget.comercio.nombre),
-            Container(
-              padding: const EdgeInsets.all(20.0),
-              child: Text(
-                widget.comercio.descripcion,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
+      body: ListView(
+        children: [
+          Presentacion(
+              imagen: widget.comercio.foto, texto: widget.comercio.nombre),
+          Container(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              widget.comercio.descripcion,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
               ),
             ),
-            ResumenDatos(mensaje: 'Dirección: ' + widget.comercio.direccion),
-            ResumenDatos(mensaje: 'Celular: ' + widget.comercio.celular),
-            ResumenDatos(mensaje: 'Telefono fijo: ' + widget.comercio.telefono),
-            ResumenDatos(mensaje: 'Categoria: ' + widget.comercio.rubro),
-            const Text(
-              'Pagina web: ',
+          ),
+          ResumenDatos(mensaje: 'Dirección: ' + widget.comercio.direccion),
+          ResumenDatos(mensaje: 'Celular: ' + widget.comercio.celular),
+          ResumenDatos(mensaje: 'Telefono fijo: ' + widget.comercio.telefono),
+          ResumenDatos(mensaje: 'Categoria: ' + widget.comercio.rubro),
+          const Text(
+            'Pagina web: ',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          InkWell(
+            child: Text(
+              widget.comercio.web,
+              style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                  color: Colors.blue),
+              textAlign: TextAlign.center,
+            ),
+            onTap: () {
+              launch(widget.comercio.web);
+            },
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: const Text(
+              'Productos y/o Servicios',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
-              ),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(255, 0, 0, 3)),
             ),
-            InkWell(
-              child: Text(
-                widget.comercio.web,
-                style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                    color: Colors.blue),
-                textAlign: TextAlign.center,
-              ),
-              onTap: () {
-                launch(widget.comercio.web);
-              },
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: const Text(
-                'Productos y/o Servicios',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(255, 0, 0, 3)),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(0),
-              child: Center(
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: productos.length,
-                  itemBuilder: (BuildContext context, i) {
-                    var cantidad = TextEditingController();
-                    return ListTile(
-                      title: Text(productos[i]['nombre'] +
-                          ' \$ ' +
-                          productos[i]['valor'].toString()),
-                      leading: const Icon(Icons.add_shopping_cart, size: 30),
-                      subtitle: Container(
-                        padding: const EdgeInsets.all(0),
-                        child: TextField(
-                          controller: cantidad,
-                          decoration: const InputDecoration(hintText: 'Cant'),
-                        ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(0),
+            child: Center(
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: productos.length,
+                itemBuilder: (BuildContext context, i) {
+                  var cantidad = TextEditingController();
+                  return ListTile(
+                    title: Text(productos[i]['nombre'] +
+                        ' \$ ' +
+                        productos[i]['valor'].toString()),
+                    leading: const Icon(Icons.add_shopping_cart, size: 30),
+                    subtitle: Container(
+                      padding: const EdgeInsets.all(0),
+                      child: TextField(
+                        controller: cantidad,
+                        decoration: const InputDecoration(hintText: 'Cant'),
                       ),
-                      onTap: () {
-                        if (cantidad.text.isEmpty) {
-                          cantidad.text = "0";
-                        }
-                        int cant = int.parse(cantidad.text);
-                        int neto = int.parse(productos[i]['valor'].toString());
-                        int total = cant * neto;
+                    ),
+                    onTap: () {
+                      if (cantidad.text.isEmpty) {
+                        cantidad.text = "0";
+                      }
+                      int cant = int.parse(cantidad.text);
+                      int neto = int.parse(productos[i]['valor'].toString());
+                      int total = cant * neto;
 
-                        DatosPedido p = DatosPedido(
-                            productos[i]['nombre'],
-                            int.parse(cantidad.text),
-                            codigos[i],
-                            productos[i]['descripcion'],
-                            productos[i]['valor'],
-                            total);
-                        pedido.add(p);
+                      DatosPedido p = DatosPedido(
+                          productos[i]['nombre'],
+                          int.parse(cantidad.text),
+                          codigos[i],
+                          productos[i]['descripcion'],
+                          productos[i]['valor'],
+                          total);
+                      pedido.add(p);
 
-                        Fluttertoast.showToast(
-                            msg: "Producto(s) agregado(s) al carrito",
-                            toastLength: Toast.LENGTH_LONG,
-                            gravity: ToastGravity.CENTER);
-                      },
-                    );
-                  },
-                ),
+                      Fluttertoast.showToast(
+                          msg: "Producto(s) agregado(s) al carrito",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.CENTER);
+                    },
+                  );
+                },
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

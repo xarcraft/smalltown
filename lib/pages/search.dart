@@ -2,11 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:smalltown/pages/find.dart';
+import 'package:smalltown/pages/newlogin.dart';
 
 class SearchPage extends StatelessWidget {
   TextEditingController search = TextEditingController();
-
-  SearchPage({Key? key}) : super(key: key);
+  final DatosUsuario usuario;
+  SearchPage({Key? key, required this.usuario}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,10 @@ class SearchPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => FindPage(search.text)));
+                          builder: (context) => FindPage(
+                                search.text,
+                                userActivo: usuario,
+                              )));
                 },
                 child: const Text(
                   'Consultar',

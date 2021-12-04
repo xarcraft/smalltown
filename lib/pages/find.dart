@@ -2,10 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/index.dart';
+import 'package:smalltown/pages/newlogin.dart';
+import 'package:smalltown/pages/perfil.dart';
 
 class FindPage extends StatefulWidget {
   final String indice;
-  const FindPage(this.indice, {Key? key}) : super(key: key);
+  final DatosUsuario userActivo;
+  // ignore: use_key_in_widget_constructors
+  const FindPage(this.indice, {required this.userActivo});
 
   @override
   _FindPageState createState() => _FindPageState();
@@ -84,7 +88,28 @@ class _FindPageState extends State<FindPage> {
           itemCount: negocios.length,
           itemBuilder: (BuildContext context, i) {
             return ListTile(
-              onTap: () {},
+              onTap: () {
+                DatosComercios local = DatosComercios(
+                    negocios[i]['celular'],
+                    negocios[i]['coordenada'],
+                    negocios[i]['direccion'],
+                    negocios[i]['foto'],
+                    negocios[i]['logo'],
+                    negocios[i]['nombre'],
+                    negocios[i]['rubro'],
+                    negocios[i]['telefono'],
+                    negocios[i]['web'],
+                    negocios[i]['descripcion']);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Perfil(
+                              user: widget.userActivo,
+                              celular: widget.userActivo.celular,
+                              idNegocio: resultado[i]['comercio'], //id comercio
+                              comercio: local,
+                            )));
+              },
               title: Presentacion(
                 imagen: negocios[i]['foto'],
                 texto: negocios[i]['nombre'],
