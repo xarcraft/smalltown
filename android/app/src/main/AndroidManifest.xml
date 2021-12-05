@@ -3,6 +3,11 @@
    <application
         android:label="SmallTown"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- TODO: Add your Google Maps API key here -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCHeFM-_aCPM7hi57dIW2t2FYjQStDUrUg"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

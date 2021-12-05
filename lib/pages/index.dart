@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/about.dart';
 import 'package:smalltown/pages/advertisement.dart';
 import 'package:smalltown/pages/homepage.dart';
+import 'package:smalltown/pages/maps.dart';
 import 'package:smalltown/pages/newlogin.dart';
 import 'package:smalltown/pages/perfil.dart';
 import 'package:smalltown/pages/personaledit.dart';
@@ -141,6 +142,15 @@ class _IndexPageState extends State<IndexPage> {
               },
             ),
             ListTile(
+              title: const Text('My Town'),
+              leading: const Icon(Icons.travel_explore),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MapsPage()));
+              },
+            ),
+            ListTile(
               title: const Text('Acerca de'),
               leading: const Icon(Icons.help_outline),
               onTap: () {
@@ -251,7 +261,7 @@ class Presentacion extends StatelessWidget {
 class DatosComercios {
   String nombre = "";
   String celular = "";
-  String coordenada = "";
+  late GeoPoint coordenada;
   String direccion = "";
   String foto = "";
   String logo = "";

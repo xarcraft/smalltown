@@ -232,11 +232,17 @@ class _ConfirmarPedidoState extends State<ConfirmarPedido> {
                                 const TextStyle(fontSize: 20))),
                         onPressed: () {
                           registrarPedido();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      IndexPage(user: widget.user)));
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return IndexPage(
+                                  user: widget.user,
+                                );
+                              },
+                            ),
+                            (route) => false,
+                          );
                         },
                         child: const Text('Confirmar')),
                     ElevatedButton(

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:smalltown/pages/index.dart';
 import 'package:smalltown/pages/newlogin.dart';
 import 'package:smalltown/pages/shoppingcart.dart';
@@ -56,6 +57,22 @@ class _PerfilState extends State<Perfil> {
 
   @override
   Widget build(BuildContext context) {
+    late GeoPoint pos = widget.comercio.coordenada;
+    final posicion =
+        CameraPosition(target: LatLng(pos.latitude, pos.longitude), zoom: 16);
+
+    final Set<Marker> marcador = {};
+
+    marcador.add(
+      Marker(
+          markerId: MarkerId(widget.comercio.celular),
+          position: LatLng(pos.latitude, pos.longitude),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+          infoWindow: InfoWindow(
+              title: widget.comercio.nombre, snippet: widget.comercio.web)),
+    );
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -135,8 +152,26 @@ class _PerfilState extends State<Perfil> {
               launch(widget.comercio.web);
             },
           ),
+          const Text(
+            '\nGeolocalización\n',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          SizedBox(
+            width: 400,
+            height: 400,
+            child: GoogleMap(
+              initialCameraPosition: posicion,
+              scrollGesturesEnabled: true,
+              zoomGesturesEnabled: false,
+              zoomControlsEnabled: false,
+              markers: marcador,
+            ),
+          ),
           Container(
             padding: const EdgeInsets.all(10),
+            color: Colors.yellow,
             child: const Text(
               'Productos y/o Servicios',
               textAlign: TextAlign.center,
@@ -193,7 +228,12 @@ class _PerfilState extends State<Perfil> {
                 },
               ),
             ),
-          )
+          ),
+          const Text(
+            '\nSmallTown® 2021\n',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );
