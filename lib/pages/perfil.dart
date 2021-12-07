@@ -68,7 +68,7 @@ class _PerfilState extends State<Perfil> {
           markerId: MarkerId(widget.comercio.celular),
           position: LatLng(pos.latitude, pos.longitude),
           icon:
-              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
           infoWindow: InfoWindow(
               title: widget.comercio.nombre, snippet: widget.comercio.web)),
     );

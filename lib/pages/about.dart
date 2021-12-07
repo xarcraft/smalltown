@@ -61,8 +61,13 @@ class _AboutMeState extends State<AboutMe> {
                   children: [
                     const Text('diseñada y programada por:\n'),
                     const Text(
-                      'HAROLD H GOMEZ B \n Grupo 04 ciclo 4B \n Desarrollo movil',
+                      'HAROLD H GOMEZ B \n Grupo 04 ciclo 4B \n Desarrollo movil\n',
                       textAlign: TextAlign.center,
+                    ),
+                    const Text(
+                      'Instructora: YENNY VIVIANA FORERO R',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
                 ),

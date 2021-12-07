@@ -39,6 +39,7 @@ class _IndexPageState extends State<IndexPage> {
         id = c.id.toString();
         codigo.add(id);
         negocios.add(c.data());
+        if (!mounted) return;
         setState(() {});
       }
     } else {
@@ -111,7 +112,9 @@ class _IndexPageState extends State<IndexPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ShoppingPage()));
+                        builder: (context) => ShoppingPage(
+                              user: widget.user,
+                            )));
               },
             ),
             /* ListTile(
@@ -232,28 +235,23 @@ class Presentacion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-      margin: const EdgeInsets.all(20),
-      elevation: 15,
-      color: const Color.fromRGBO(243, 255, 0, 1),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Column(children: [
-          Image.network(imagen),
-          Container(
-              padding: const EdgeInsets.all(10),
-              color: const Color.fromRGBO(243, 255, 0, 1),
-              child: Text(
-                texto,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30),
-              ))
-        ]),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: CircleAvatar(
+            maxRadius: 100,
+            child: Image.network(imagen),
+          ),
+        ),
+        Text(
+          texto,
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30),
+        ),
+        const Divider()
+      ],
     );
   }
 }
