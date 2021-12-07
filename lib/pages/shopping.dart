@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smalltown/pages/newlogin.dart';
 
 class ShoppingPage extends StatefulWidget {
   final DatosUsuario user;
+  // ignore: use_key_in_widget_constructors
   const ShoppingPage({required this.user});
 
   @override
@@ -15,6 +15,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
   List articulos = [];
   List resultado = [];
 
+  @override
   void initState() {
     super.initState();
     getArticulos();
@@ -47,11 +48,6 @@ class _ShoppingPageState extends State<ShoppingPage> {
             articulos.add(n.data());
           });
         }
-      } else {
-        Fluttertoast.showToast(
-            msg: 'no hay ordenes aún',
-            toastLength: Toast.LENGTH_LONG,
-            gravity: ToastGravity.BOTTOM);
       }
     }
   }
